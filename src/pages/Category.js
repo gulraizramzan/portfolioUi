@@ -22,7 +22,7 @@ const Category = () => {
 
   useEffect(()=>{
     getDataBycategory()
-  },[])
+  },[category])
   const handleView = async (productId) => {
     try {
       const response = await ProductServices.get(
