@@ -2,7 +2,7 @@ import axios from "axios"
 
 
  const LoginApiServices= axios.create({
-    baseURL: "http://localhost:4000/api"
+    baseURL: "https://giddy-uniform-moth.cyclic.app/api"
 })
 
 
