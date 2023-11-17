@@ -15,7 +15,7 @@ const Protected=({Component})=>{
         {
             navigate('/login')
         }
-    },[])
+    })
 return(
     <>
     <Component/>

@@ -55,14 +55,7 @@ else
       navigate('/signup')
     }
 
-// useEffect(()=>{
-// getAlluser()
-// },[])
 
-// const getAlluser=async()=>{
-//   let user= await LoginApiServices.get("/users");
-//   console.log("user",user)
-// }
 
 return(
     <>

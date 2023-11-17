@@ -1,13 +1,13 @@
 import Header from "./header"
 import Footer from "../components/Footer"
 import ProductServices from "../utils/productServices"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Why } from "../components/Why"
 const Home=()=>{
 
 const[product,setProduct]=useState([])
-const [singleProduct, setSingleProduct] = useState();
+
 
 const uniqueCategories = [...new Set(product.map(products => products.category))];
 
@@ -24,17 +24,7 @@ const getAllProducts=async()=>{
 }
 
 const handleView = async (productId) => {
-  try {
-    const response = await ProductServices.get(
-      `get-single-product/${productId}`
-    );
-    if (response.data.success) {
-      setSingleProduct(response.data.data);
       navigate(`/productDetail/${productId}`);
-    }
-  } catch (error) {
-    console.log(error);
-  }
 };
 
 
@@ -77,7 +67,7 @@ const handelClick=(category)=>{
           <h2 className="text-lg font-bold text-black truncate block capitalize">{product.productTitle.slice(0,20)}...</h2>
         </div>
         <button  onClick={() => handleView(product._id)} className="group mx-auto mb-2 flex h-10 w-10/12 items-stretch overflow-hidden rounded-md text-gray-600">
-          <div className="flex w-full items-center justify-center bg-gray-100 text-xs uppercase transition group-hover:bg-emerald-600 group-hover:text-white">See Details</div>
+          <div className="flex w-full items-center justify-center text-xs uppercase transition group-hover:bg-emerald-600 group-hover:text-black">See Details</div>
         </button> 
       </article>
 </>

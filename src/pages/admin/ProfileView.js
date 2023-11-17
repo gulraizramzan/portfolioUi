@@ -2,12 +2,11 @@ import React,{useState,useEffect} from 'react'
 import Nav from './Nav'
 import LoginApiServices from '../../utils/loginApiServices'
 import ProductServices from '../../utils/productServices'
-import { useParams } from 'react-router-dom'
 const ProfileView = () => {
     const [userData,setUserData]=useState([])
     // console.log(userData)
     // const{id}=useParams()
-    const {firstName,lastName,userName,email,phoneNumber,address,isAdmin,password,_id}=userData
+    const {firstName,lastName,userName,email,phoneNumber,address,isAdmin,_id}=userData
     console.log("id",_id)
         const getUserData=async()=>{
             try {
@@ -34,6 +33,8 @@ const ProfileView = () => {
         const handelUpdateUser=async(id)=>{
             try {
                 const res= ProductServices.put(`/users/${id}`,userData)
+                if(res)
+                alert("Product updated")
             } catch (error) {
                 console.log(error)
             }
@@ -48,60 +49,60 @@ const ProfileView = () => {
       </div>
 
       <form>
-    <div class="grid gap-6 mb-6 md:grid-cols-2 mt-10">
+    <div className="grid gap-6 mb-6 md:grid-cols-2 mt-10">
         <div>
-            <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+            <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
             <input value={firstName} 
             onChange={handelChanges}
             type="text"
             name='firstName'
-            id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required/>
+            id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required/>
         </div>
         <div>
-            <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+            <label for="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
             <input 
              onChange={handelChanges}
              name='lastName'
-            value={lastName} type="text" id="last_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required/>
+            value={lastName} type="text" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required/>
         </div>
         <div>
-            <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
+            <label for="company" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User Name</label>
             <input 
              onChange={handelChanges}
              name='userName'
-            value={userName} type="text" id="company" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Flowbite" required/>
+            value={userName} type="text" id="company" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Flowbite" required/>
         </div>  
         <div>
-            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+            <label for="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
             <input
              onChange={handelChanges}
              name='phoneNumber'
-            value={phoneNumber} type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" 
+            value={phoneNumber} type="tel" id="phone" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="123-45-678" 
             // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" 
             required/>
         </div>
         <div>
-            <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+            <label for="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
             <input 
              onChange={handelChanges}
              name='address'
-            value={address} type="text" id="website" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="flowbite.com" required/>
+            value={address} type="text" id="website" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="flowbite.com" required/>
         </div>
         <div>
-            <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role(only true or false)</label>
+            <label for="visitors" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role(only true or false)</label>
             <input
              onChange={handelChanges}
              name='isAdmin'
-            value={isAdmin} type="text" id="visitors" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required/>
+            value={isAdmin} type="text" id="visitors" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required/>
         </div>
     </div>
-    <div class="mb-6">
+    <div className="mb-6">
         <label
-        for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+        for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
         <input
         onChange={handelChanges}
         name='email'
-        value={email} type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required/>
+        value={email} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required/>
     </div> 
     <div className="flex justify-end mt-6">
             <button
